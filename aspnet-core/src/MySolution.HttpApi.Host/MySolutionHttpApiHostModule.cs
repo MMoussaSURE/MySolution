@@ -195,11 +195,13 @@ public class MySolutionHttpApiHostModule : AbpModule
 
             var cookieProvider = new Microsoft.AspNetCore.Localization.CookieRequestCultureProvider();
             var queryStringProvider = new Microsoft.AspNetCore.Localization.QueryStringRequestCultureProvider();
+             var acceptLanguageProvider = new Microsoft.AspNetCore.Localization.AcceptLanguageHeaderRequestCultureProvider();
 
             options.RequestCultureProviders = new List<Microsoft.AspNetCore.Localization.IRequestCultureProvider>
             {
               queryStringProvider,
               cookieProvider,
+              acceptLanguageProvider
 
             };
         });
