@@ -185,26 +185,7 @@ public class MySolutionHttpApiHostModule : AbpModule
             app.UseDeveloperExceptionPage();
         }
 
-        app.UseAbpRequestLocalization(options =>
-        {
-            var supportedCultures = new[] { "ar", "en" };
-
-            options.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("ar");
-            options.SupportedCultures = supportedCultures.Select(c => new System.Globalization.CultureInfo(c)).ToList();
-            options.SupportedUICultures = supportedCultures.Select(c => new System.Globalization.CultureInfo(c)).ToList();
-
-            var cookieProvider = new Microsoft.AspNetCore.Localization.CookieRequestCultureProvider();
-            var queryStringProvider = new Microsoft.AspNetCore.Localization.QueryStringRequestCultureProvider();
-             var acceptLanguageProvider = new Microsoft.AspNetCore.Localization.AcceptLanguageHeaderRequestCultureProvider();
-
-            options.RequestCultureProviders = new List<Microsoft.AspNetCore.Localization.IRequestCultureProvider>
-            {
-              queryStringProvider,
-              cookieProvider,
-              acceptLanguageProvider
-
-            };
-        });
+        app.UseAbpRequestLocalization();
 
         if (!env.IsDevelopment())
         {
